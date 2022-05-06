@@ -17,7 +17,7 @@ class EtudiantFixtures extends Fixture
             $etudiant = new Etudiant();
             $etudiant->setNom($fake->name);
             $etudiant->setPrenom($fake->firstName);
-            if ($i%2==0){
+            if ($i < 10){
                 $repository = $manager->getRepository(Section::class);
                 $random = rand(0,10);
                 $section = $repository->findOneBy(['id'=>$random]);
