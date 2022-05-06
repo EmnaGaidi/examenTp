@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EtudiantController!{% endblock %}
+
+{% block body %}
+
+    <h1>Liste des étudiants ✅</h1>
+    <a href="{{ path('etudiant.add') }}">Ajouter un étudiant</a>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Firstname</th>
+        <th scope="col">Name</th>
+        <th scope="col">Section</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for etudiant in etudiants %}
+    <tr>
+        <th scope="row">{{ etudiant.prenom }}</th>
+        <td>{{ etudiant.prenom }}</td>
+        <td>{% if(etudiant.section == null) %}Etudiant non encore affecté à une section{% else %}{{ etudiant.section }}{% endif %}</td>
+        <td>@mdo</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
