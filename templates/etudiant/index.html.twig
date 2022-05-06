@@ -21,7 +21,7 @@
         <th scope="row">{{ etudiant.prenom }}</th>
         <td>{{ etudiant.prenom }}</td>
         <td>{% if(etudiant.section == null) %}Etudiant non encore affecté à une section{% else %}{{ etudiant.section }}{% endif %}</td>
-        <td>@mdo</td>
+        <td><a href="{{ path('delete',{id : etudiant.id}) }}">Supprimer</a></td>
     </tr>
     {% endfor %}
     </tbody>

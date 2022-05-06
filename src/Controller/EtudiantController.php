@@ -39,4 +39,13 @@ class EtudiantController extends AbstractController
             ]);
         }
     }
+
+    #[Route('/delete/{id}',name: 'delete')]
+public function delete(ManagerRegistry $docrine,Etudiant $etudiant = null)
+    {
+        $manager = $docrine->getManager();
+        $manager->remove($etudiant);
+        $manager->flush();
+        return $this->redirectToRoute('app_etudiant');
+    }
 }

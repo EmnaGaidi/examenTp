@@ -12,17 +12,14 @@ class EtudiantFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+        $repository = $manager->getRepository(Section::class);
         $fake = Factory::create('fr_FR');
         for($i=0;$i<40;$i++){
             $etudiant = new Etudiant();
             $etudiant->setNom($fake->name);
             $etudiant->setPrenom($fake->firstName);
-            if ($i < 10){
-                $repository = $manager->getRepository(Section::class);
-                $random = rand(0,10);
-                $section = $repository->findOneBy(['id'=>$random]);
-                $etudiant->setSection($section);
-            }
+            $section= $repository->findOneBy(['id'=>$i]);
+            $etudiant->setSection($section);
             $manager->persist($etudiant);
         }
 
